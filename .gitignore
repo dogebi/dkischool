@@ -1,0 +1,9 @@
+# 런타임 산출물 — 코드만 버전관리한다
+data/
+logs/
+web/
+__pycache__/
+*.pyc
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
