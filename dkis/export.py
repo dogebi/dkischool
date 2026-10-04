@@ -29,7 +29,7 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
     --paper:#f3f3f1; --panel:#fff; --panel-2:#ededeb; --hover:#f7f7f5; --sel:#f2f4f7;
     --ink:#17181a; --ink-2:#4e5257; --ink-3:#82868d;
     --rule:#dbdbd5; --rule-soft:#e9e9e4;
-    --accent:#164a7a; --accent-soft:#e9eef5; --mark:#fbeec2;
+    --accent:#14553f; --accent-soft:#e8efe9; --mark:#fbeec2;
     --mono:ui-monospace,"Cascadia Mono","Consolas","Liberation Mono",monospace;
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
     --barh:60px; --indent:180px;
@@ -38,7 +38,7 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--panel);color:var(--ink);
        font:14px/1.62 var(--sans);-webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none;border-bottom:1px solid #c3d2e2}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid #c2d5cb}
   a:hover{border-bottom-color:var(--accent)}
   :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
   button{font:inherit;color:inherit}
@@ -195,6 +195,38 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
   footer a{font-family:var(--mono);font-size:11px}
   footer .r{margin-left:auto}
 
+  /* ── 밀도 토글 (보통 / 조밀) ───────────────────────────── */
+  body.dens-compact .row{padding:5px 8px}
+  body.dens-compact .c-title{font-size:13.5px}
+  body.dens-compact .c-no,body.dens-compact .c-views{line-height:1.45}
+  body.dens-compact .head span{padding:8px 0}
+  body.dens-compact .pane{padding-bottom:18px}
+  body.dens-compact .meta{padding:8px 0;margin-bottom:12px}
+  body.dens-compact .txt{margin-bottom:14px;line-height:1.7}
+  body.dens-compact .thumbs img{height:112px}
+
+  /* ── 다크 모드 (툴바 토글 · 기본은 라이트) ─────────────── */
+  body.theme-dark{
+    --paper:#17191a; --panel:#1e2022; --panel-2:#292c2e; --hover:#25282a; --sel:#222a2c;
+    --ink:#ecebe6; --ink-2:#b4b6b3; --ink-3:#8a8d8a;
+    --rule:#35393b; --rule-soft:#2a2d30;
+    --accent:#82c3a4; --accent-soft:#223029; --mark:#4c4218;
+  }
+  body.theme-dark a{border-bottom-color:#33564a}
+  body.theme-dark a:hover{border-bottom-color:var(--accent)}
+  body.theme-dark mark{color:#f3f0e8}
+  body.theme-dark input[type=search]{background:#141617}
+  body.theme-dark input[type=search]:focus{background:#101213}
+  body.theme-dark .seg{background:#141617}
+  body.theme-dark .seg button:hover{background:#24272a}
+  body.theme-dark .seg button[aria-pressed=true]{background:#24272a}
+  body.theme-dark .find kbd{background:#24272a}
+  body.theme-dark .more{background:#141617}
+  body.theme-dark .more:hover{background:#24272a}
+  body.theme-dark .empty button{background:#141617;color:var(--ink-2)}
+  body.theme-dark .empty button:hover{background:#24272a;color:var(--ink)}
+  body.theme-dark .thumbs a{background:#141617}
+
   @media (max-width:1040px){
     .app{grid-template-columns:1fr}
     aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--rule);
@@ -266,6 +298,13 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
       <div class="seg" role="group" aria-label="필터">
         <button type="button" id="onlyatt" aria-pressed="false">첨부만</button>
       </div>
+      <div class="seg" id="densseg" role="group" aria-label="행 밀도">
+        <button type="button" data-dens="cozy" aria-pressed="true">보통</button>
+        <button type="button" data-dens="compact" aria-pressed="false">조밀</button>
+      </div>
+      <div class="seg" role="group" aria-label="테마">
+        <button type="button" id="theme" aria-pressed="false">어둡게</button>
+      </div>
       <span class="count" id="count"></span>
     </div>
 
@@ -309,9 +348,10 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
   var $ = function (id) { return document.getElementById(id); };
   var rowsEl = $('rows'), moreEl = $('more'), qEl = $('q'), clearEl = $('clear'),
       segEl = $('sortseg'), attEl = $('onlyatt'), cntEl = $('count'),
+      densEl = $('densseg'), themeEl = $('theme'),
       hDate = $('h-date'), hViews = $('h-views'), hBoard = $('h-board');
 
-  var state = { board: '', kw: '', sort: 'date_desc', only: false, shown: BATCH };
+  var state = { board: '', kw: '', sort: 'date_desc', only: false, shown: BATCH, dens: 'cozy' };
   var view = [];
 
   /* ── helpers ─────────────────────────────────────────── */
@@ -573,6 +613,34 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
     state.shown = BATCH;
     render();
   });
+
+  /* ── 행 밀도 (보통/조밀, localStorage 유지) ───────────── */
+  function setDens(v) {
+    state.dens = v;
+    document.body.classList.toggle('dens-compact', v === 'compact');
+    Array.prototype.forEach.call(densEl.querySelectorAll('button'), function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.dens === v));
+    });
+    try { localStorage.setItem('dkis-dens', v); } catch (err) { /* 파일 직접 열람 시 무시 */ }
+    measure();
+  }
+  densEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-dens]');
+    if (b) { setDens(b.dataset.dens); }
+  });
+
+  /* ── 테마 (라이트 기본 / 다크 토글, localStorage 유지) ── */
+  function setTheme(dark) {
+    document.body.classList.toggle('theme-dark', dark);
+    themeEl.setAttribute('aria-pressed', String(dark));
+    themeEl.textContent = dark ? '밝게' : '어둡게';
+    var m = document.querySelector('meta[name=color-scheme]');
+    if (m) { m.setAttribute('content', dark ? 'dark' : 'light'); }
+    try { localStorage.setItem('dkis-theme', dark ? 'dark' : 'light'); } catch (err) { /* 무시 */ }
+  }
+  themeEl.addEventListener('click', function () {
+    setTheme(!document.body.classList.contains('theme-dark'));
+  });
   hDate.addEventListener('click', function () {
     setSort(state.sort === 'date_asc' ? 'date_desc' : 'date_asc');
   });
@@ -606,6 +674,12 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
 
   renderSide();
   syncSort();
+  var savedDens = 'cozy';
+  try { savedDens = localStorage.getItem('dkis-dens') || 'cozy'; } catch (err) { /* 무시 */ }
+  setDens(savedDens === 'compact' ? 'compact' : 'cozy');
+  var savedTheme = 'light';
+  try { savedTheme = localStorage.getItem('dkis-theme') || 'light'; } catch (err) { /* 무시 */ }
+  setTheme(savedTheme === 'dark');
   compute();
   render();
   measure();
