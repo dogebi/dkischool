@@ -1,0 +1,318 @@
+{
+ "posts": 2479,
+ "attachments": 2855,
+ "attachments_downloaded": 0,
+ "boards": [
+  {
+   "menu_no": 40,
+   "name": "학교앨범",
+   "kind": "gallery",
+   "last_crawled": "2026-10-04 21:49:21",
+   "posts_seen": 3
+  },
+  {
+   "menu_no": 41,
+   "name": "가정통신문",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:48:45",
+   "posts_seen": 933
+  },
+  {
+   "menu_no": 42,
+   "name": "보건실",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:48:53",
+   "posts_seen": 122
+  },
+  {
+   "menu_no": 43,
+   "name": "급식실",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:48:55",
+   "posts_seen": 0
+  },
+  {
+   "menu_no": 44,
+   "name": "게시판",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:48:56",
+   "posts_seen": 68
+  },
+  {
+   "menu_no": 45,
+   "name": "학생회",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:48:58",
+   "posts_seen": 35
+  },
+  {
+   "menu_no": 46,
+   "name": "컵스카우트",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:49:05",
+   "posts_seen": 75
+  },
+  {
+   "menu_no": 47,
+   "name": "공지사항",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:49:06",
+   "posts_seen": 784
+  },
+  {
+   "menu_no": 49,
+   "name": "졸업생 대학진학 현황",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:49:07",
+   "posts_seen": 398
+  },
+  {
+   "menu_no": 74,
+   "name": "한글학교 소식",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:49:09",
+   "posts_seen": 20
+  },
+  {
+   "menu_no": 79,
+   "name": "도서실 공지사항",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:49:10",
+   "posts_seen": 68
+  },
+  {
+   "menu_no": 81,
+   "name": "도서신청 및 기타",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:49:11",
+   "posts_seen": 35
+  },
+  {
+   "menu_no": 86,
+   "name": "행사일정",
+   "kind": "event",
+   "last_crawled": "2026-10-04 21:49:20",
+   "posts_seen": 0
+  },
+  {
+   "menu_no": 94,
+   "name": "교육계획서",
+   "kind": "file",
+   "last_crawled": "2026-10-04 21:49:18",
+   "posts_seen": 7
+  },
+  {
+   "menu_no": 96,
+   "name": "학교규정집",
+   "kind": "file",
+   "last_crawled": "2026-10-04 21:49:19",
+   "posts_seen": 29
+  },
+  {
+   "menu_no": 132,
+   "name": "학부모회 게시판",
+   "kind": "board",
+   "last_crawled": "2026-10-04 21:49:12",
+   "posts_seen": 0
+  }
+ ],
+ "per_board": [
+  {
+   "menu_no": 41,
+   "c": 933,
+   "latest": "2026-09-21 오후 12:27:00"
+  },
+  {
+   "menu_no": 47,
+   "c": 719,
+   "latest": "2026-10-02 오전 11:41:00"
+  },
+  {
+   "menu_no": 49,
+   "c": 365,
+   "latest": "2024-03-08 오후 12:00:00"
+  },
+  {
+   "menu_no": 42,
+   "c": 122,
+   "latest": "2026-09-03 오전 11:01:00"
+  },
+  {
+   "menu_no": 46,
+   "c": 75,
+   "latest": "2020-05-12 오전 9:05:00"
+  },
+  {
+   "menu_no": 44,
+   "c": 68,
+   "latest": "2020-12-09 오후 2:34:00"
+  },
+  {
+   "menu_no": 79,
+   "c": 68,
+   "latest": "2026-07-03 오후 4:56:00"
+  },
+  {
+   "menu_no": 45,
+   "c": 35,
+   "latest": "2020-12-09 오후 2:35:00"
+  },
+  {
+   "menu_no": 81,
+   "c": 35,
+   "latest": "2017-06-01 오후 5:57:00"
+  },
+  {
+   "menu_no": 96,
+   "c": 29,
+   "latest": "2020-07-03"
+  },
+  {
+   "menu_no": 74,
+   "c": 20,
+   "latest": "2018-12-04 오후 12:44:00"
+  },
+  {
+   "menu_no": 94,
+   "c": 7,
+   "latest": "2024-03-09"
+  },
+  {
+   "menu_no": 40,
+   "c": 3,
+   "latest": ""
+  }
+ ],
+ "by_attachment_ext": [
+  {
+   "ext": "jpg",
+   "c": 957
+  },
+  {
+   "ext": "hwp",
+   "c": 840
+  },
+  {
+   "ext": "pdf",
+   "c": 586
+  },
+  {
+   "ext": "gif",
+   "c": 241
+  },
+  {
+   "ext": "bmp",
+   "c": 70
+  },
+  {
+   "ext": "xlsx",
+   "c": 57
+  },
+  {
+   "ext": "docx",
+   "c": 49
+  },
+  {
+   "ext": "xls",
+   "c": 26
+  },
+  {
+   "ext": "doc",
+   "c": 11
+  },
+  {
+   "ext": "hwpx",
+   "c": 5
+  },
+  {
+   "ext": "zip",
+   "c": 3
+  },
+  {
+   "ext": "mp4",
+   "c": 2
+  },
+  {
+   "ext": "jpeg",
+   "c": 2
+  },
+  {
+   "ext": "wmv",
+   "c": 1
+  },
+  {
+   "ext": "rar",
+   "c": 1
+  }
+ ],
+ "runs": [
+  {
+   "id": 4,
+   "site_key": "dkischool",
+   "mode": "incremental",
+   "started_at": "2026-10-04 21:48:42",
+   "finished_at": "2026-10-04 21:49:21",
+   "boards": "41,42,43,44,45,46,47,49,74,79,81,132,94,96,86,40",
+   "pages": 13,
+   "posts_new": 0,
+   "posts_updated": 4,
+   "attachments_new": 0,
+   "errors": 0,
+   "stats_json": "{\"fetcher\": {\"requests\": 21, \"bytes_in\": 507701, \"retries\": 0, \"errors\": 0, \"by_status\": {\"200\": 21}}, \"robots\": {\"respect\": true, \"disallow\": [\"/upload/\"]}, \"workers\": 3, \"elapsed_s\": 38.8}",
+   "notes": "41:신규 0건 (p1 도달); 42:신규 0건 (p1 도달); 43:빈 목록 · 전체 1회 완주; 44:신규 0건 (p1 도달); 45:신규 0건 (p1 도달); 46:신규 0건 (p1 도달); 47:신규 0건 (p1 도달); 49:신규 0건 (p1 도달); 74:신규 0건 (p1 도달); 79:신규 0건 (p1 도달); 81:신규 0건 (p1 도달); 132:빈 목록 · 전체 1회 완주; 94:신규 0건 (p1 도달); 96:신규 0건 (p1 도달); 86:빈 목록 · 전체 1회 완주; 40:신규 0건 (p1 도달)"
+  },
+  {
+   "id": 3,
+   "site_key": "dkischool",
+   "mode": "incremental",
+   "started_at": "2026-10-03 23:33:16",
+   "finished_at": "2026-10-04 00:08:50",
+   "boards": "41,42,43,44,45,46,47,49,74,79,81,132,94,96,86,40",
+   "pages": 233,
+   "posts_new": 2369,
+   "posts_updated": 4,
+   "attachments_new": 0,
+   "errors": 0,
+   "stats_json": "{\"fetcher\": {\"requests\": 2610, \"bytes_in\": 66346781, \"retries\": 0, \"errors\": 0, \"by_status\": {\"200\": 2610}}, \"robots\": {\"respect\": true, \"disallow\": [\"/upload/\"]}, \"workers\": 3, \"elapsed_s\": 2133.7}",
+   "notes": "41:마지막 페이지(p84) · 전체 1회 완주; 42:마지막 페이지(p2) · 전체 1회 완주; 43:빈 목록 · 전체 1회 완주; 44:마지막 페이지(p6) · 전체 1회 완주; 45:마지막 페이지(p3) · 전체 1회 완주; 46:마지막 페이지(p6) · 전체 1회 완주; 47:마지막 페이지(p65) · 전체 1회 완주; 49:마지막 페이지(p24) · 전체 1회 완주; 74:마지막 페이지(p1) · 전체 1회 완주; 79:마지막 페이지(p6) · 전체 1회 완주; 81:마지막 페이지(p3) · 전체 1회 완주; 132:빈 목록 · 전체 1회 완주; 94:마지막 페이지(p1) · 전체 1회 완주; 96:마지막 페이지(p2) · 전체 1회 완주; 86:빈 목록 · 전체 1회 완주; 40:마지막 페이지(p1) · 전체 1회 완주"
+  },
+  {
+   "id": 2,
+   "site_key": "dkischool",
+   "mode": "incremental",
+   "started_at": "2026-10-03 23:30:43",
+   "finished_at": null,
+   "boards": "41,42,43,44,45,46,47,49,74,79,81,132,94,96,86,40",
+   "pages": 0,
+   "posts_new": 0,
+   "posts_updated": 0,
+   "attachments_new": 0,
+   "errors": 0,
+   "stats_json": null,
+   "notes": null
+  },
+  {
+   "id": 1,
+   "site_key": "dkischool",
+   "mode": "incremental",
+   "started_at": "2026-10-03 23:29:07",
+   "finished_at": null,
+   "boards": "41,42,43,44,45,46,47,49,74,79,81,132,94,96,86,40",
+   "pages": 0,
+   "posts_new": 0,
+   "posts_updated": 0,
+   "attachments_new": 0,
+   "errors": 0,
+   "stats_json": null,
+   "notes": null
+  }
+ ],
+ "site": {
+  "key": "dkischool",
+  "name": "대련한국국제학교",
+  "base_url": "http://dkischool.org",
+  "school_code": "10177"
+ },
+ "exported_posts": 2479,
+ "exported_attachments": 2855
+}

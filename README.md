@@ -122,3 +122,19 @@ no_agent 스크립트: /mnt/d/dev/dkischool-crawler/scripts/crawl-incremental.sh
   `--attachments`(또는 `ATT=1 bash scripts/crawl-full.sh`)로만 켜지며, 실행 시 경고를 출력합니다.
   첨부 **메타데이터**(파일명·URL·확장자)는 다운로드 없이도 항상 기록됩니다.
 - 수집 데이터의 권리는 원 사이트(학교)에 있습니다. 외부 배포 전 이용 조건을 확인하십시오.
+
+## 8. 공개 (GitHub Pages)
+
+```bash
+bash scripts/publish-pages.sh        # 뷰어를 저장소 루트 index.html 로 복사 + 내보내기 파일 동봉
+git add index.html posts.json attachments.csv summary.json robots.txt .nojekyll && \
+  git commit -m "publish: 뷰어 공개 사본 갱신" && git push origin main
+```
+
+- 사이트: `https://dogebi.github.io/dkischool/` — Pages 소스는 `main` 브랜치 루트(`/`)입니다.
+- 루트 `index.html` 은 **생성물**입니다. 손으로 고치면 다음 `publish-pages.sh` 실행에서 덮이므로
+  화면 수정은 항상 `dkis/export.py` 의 `VIEWER_TEMPLATE` 에서 합니다.
+- `robots.txt`(`Disallow: /`) 와 `index.html` 의 `<meta name="robots" content="noindex, nofollow">` 로
+  검색엔진 수집을 막아 둡니다. 노출이 필요하면 이 두 곳을 지웁니다.
+- 첨부 파일 실물은 저장소에 넣지 않습니다(robots `/upload/` 정책) — 뷰어의 첨부 링크는 원 사이트 파일을 엽니다.
+
