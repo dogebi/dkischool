@@ -121,6 +121,9 @@ VIEWER_TEMPLATE = r"""<!DOCTYPE html>
        border-radius:2px;background:var(--paper);font:inherit;font-size:13px;color:var(--ink)}
   input[type=search]:focus{background:var(--panel);border-color:var(--navy)}
   input[type=search]::placeholder{color:var(--ink-3)}
+  /* 브라우저 기본 '지우기' 단추 제거 — 뷰어의 × 버튼과 겹친다 */
+  input[type=search]::-webkit-search-cancel-button,
+  input[type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
   .find kbd{position:absolute;right:34px;font:10.5px/1 var(--mono);color:var(--ink-3);
        border:1px solid var(--rule);border-radius:2px;padding:3px 5px;background:var(--panel)}
   .find .x{position:absolute;right:6px;width:22px;height:22px;line-height:1;border:0;
