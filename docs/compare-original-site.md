@@ -33,6 +33,37 @@
 | 과거 글 접근 | 게시판별 페이지 이동(공지 66페이지, 가정통신문 85페이지) | 검색·정렬로 즉시 도달 |
 | 수명 | 홈페이지 개편·서버 이전 시 소실 위험 | SQLite + JSON/CSV 내보내기로 보존 |
 
+## 아키텍처 비교 — 백엔드 / 프런트엔드
+
+**원본(dkischool.org)은 백엔드가 있는 동적 CMS다. 아카이브 뷰어는 런타임 백엔드가 없다(정적 파일).**
+
+### 원본 — 클래식 ASP + CMS 임대형
+
+| 계층 | 실측 근거 |
+|---|---|
+| 백엔드 | `default.asp?menu_no=47&board_mode=list\|view\|write` — 모든 게시판이 `.asp` 하나로 라우팅(HTML 내 `.asp` 참조 28곳), 검색 폼 `action="default.asp" method="get"` |
+| 세션 | 응답 헤더 `Set-Cookie: ASPSESSIONIDQQRSDTAB=…; path=/` → 서버 세션 기반(클래식 ASP) |
+| 동적 생성 | `Cache-Control: no-cache,…,private`, `Pragma: no-cache`, `Expires: 0`, `P3P: CP=…` → 파일이 아니라 요청마다 조립되는 페이지 |
+| 데이터 | 게시판 DB(서버 측) + 첨부 파일 서버 `upload70.withschool.co.kr`, 본문 이미지 `dkis.withschool.co.kr/upload/editor/…` |
+| 스킨 | `http://www.withschool.co.kr/css/board_design/blue.css` → withschool(w.cms) 임대 스킨 |
+| 인증 | `board_mode=write` 200 응답에 "회원·글쓰기" 안내, HOME/LOGIN/SITEMAP → 회원 로그인·글쓰기 백엔드 |
+| 프런트 | 서버 렌더 HTML + CSS 4종(style·common·contents·board blue) + jQuery 1.8.3, design.js, bn.js, sliderkit — SPA 아님 |
+| 인코딩 | EUC-KR |
+
+### 아카이브 뷰어 — 런타임 백엔드 없음, 빌드 시점 파이프라인만
+
+| 계층 | 실측 |
+|---|---|
+| 런타임 | 정적 파일만(GitHub Pages). 서버 프로세스·DB 서버·API 엔드포인트 없음 |
+| 프런트 | 단일 HTML + 인라인 CSS(283줄) + 바닐라 JS(352줄) + 데이터 인라인(POSTS 993KB·ATTS 519KB). jQuery·React·Vue·Bootstrap·Tailwind 0, 외부 CSS 0 |
+| 런타임 호출 | `fetch(`·`XMLHttpRequest`·`$.ajax`·WebSocket **0건** — 페이지는 서버 호출 없이 동작. 글을 펼칠 때만 원 사이트 이미지(`dkis.withschool.co.kr/upload/…`)와 첨부·원문 링크를 부른다 |
+| 백엔드 역할(빌드 시점) | 파이썬 표준 라이브러리 크롤러(robots 준수·레이트리밋·EUC-KR 디코딩) → SQLite(`data/dkis.sqlite3`) → `dkis export` → 단일 index.html. 크론(`scripts/crawl-incremental.sh`)이 증분 갱신 |
+| 데이터 배포본 | `posts.json`(1.8MB)·`attachments.csv`·`summary.json` 정적 다운로드. SQLite 원본은 저장소에 넣지 않는다 |
+
+즉 "단순 HTML/CSS인가"라는 질문에는: **원본은 ASP 백엔드 + DB + 세션을 가진 3계층 사이트**,
+**아카이브는 백엔드 없는 정적 단일 파일(HTML+CSS+바닐라 JS+데이터 내장)** 이며, 크롤러·SQLite·크론이
+"서버 대신 빌드 시점에" 데이터를 공급한다.
+
 ## 색·시각 언어
 
 - 원본: 네이비 블루 계열(표 헤더 `#2f82b4`, 상단 메뉴 바 파랑), 학교 로고, 배너 슬라이더 중심
