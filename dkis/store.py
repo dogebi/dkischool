@@ -179,8 +179,12 @@ class Store:
     def upsert_post(self, site_key: str, post, *, url: str = "", posted_date: str = "",
                     is_notice: bool = False, has_attachment: bool = False) -> str:
         """('new'|'updated'|'unchanged') 반환."""
+        # content_hash 입력에 조회수(views)를 넣지 않는다 — 조회수는 열람할 때마다 서버가
+        # 증가시키므로, 해시에 포함하면 '내용이 같은 글'도 매 수집마다 '수정됨'으로 집계된다
+        # (크롤 자신이 조회수를 올려 다시 수정으로 잡히는 순환). 조회수는 아래 unchanged
+        # 경로에서 계속 최신값으로 갱신한다.
         chash = sha256_text("|".join([post.title or "", post.content_text or "",
-                                      post.author or "", str(post.views or "")]))
+                                      post.author or ""]))
         prev = self.get_post(site_key, post.menu_no, post.bno)
         payload = (
             post.title, post.author, post.posted_at, posted_date, post.views,

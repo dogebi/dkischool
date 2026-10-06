@@ -10,7 +10,7 @@ cd "$ROOT"
 SITE="${SITE:-dkischool}"
 
 mkdir -p data/export web
-python3 -m dkis export --site "$SITE"
+[ "${EXPORT:-1}" = "1" ] && python3 -m dkis export --site "$SITE"
 
 cp web/index.html index.html
 cp data/export/posts.json data/export/attachments.csv data/export/summary.json ./
