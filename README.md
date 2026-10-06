@@ -95,13 +95,25 @@ logs/, web/             실행 로그, 생성된 뷰어
 ## 5. 크론
 
 ```bash
-bash scripts/crawl-incremental.sh          # 증분 수집 → export → 뷰어 갱신(로그: logs/crawl-incremental.log)
+bash scripts/crawl-incremental.sh          # 증분 수집 → export → 뷰어 갱신 → 공개 사본 + push (로그: logs/crawl-incremental.log)
+PUBLISH=0 bash scripts/crawl-incremental.sh  # 배포 없이 수집·뷰어 갱신만
 ```
 Hermes 크론 등록 예(6시간마다):
 ```
 no_agent 스크립트: /mnt/d/dev/dkischool-crawler/scripts/crawl-incremental.sh
 ```
 `flock` 으로 중복 실행을 막으므로 수집이 길어져도 안전합니다.
+수집 뒤에는 `publish-pages.sh` 가 저장소 루트 `index.html`·내보내기 파일을 갱신하고,
+변경이 있으면 자동으로 커밋·푸시합니다(→ GitHub Pages 재빌드). push 자격증명이 없어 실패해도
+수집·뷰어 생성은 이미 끝난 상태이며 로그에만 남습니다(`PUBLISH=0` 으로 끌 수 있음).
+
+### 갱신 판정 (`content_hash`)
+
+`content_hash = sha256(제목 | 본문텍스트 | 작성자)` — **조회수는 해시에서 제외**합니다.
+조회수는 열람할 때마다 서버가 증가시키므로 해시에 넣으면 내용이 같은 글도 매 수집마다
+"수정됨"으로 집계되고(크롤 자신이 조회수를 올려 다시 수정으로 잡히는 순환), 자동 배포까지
+불필요하게 발생합니다. 조회수는 수집 시 최신값으로만 갱신됩니다(`views=MAX(...)`).
+기존 DB의 해시는 `python3 scripts/refresh_content_hash.py` 로 한 번 재계산합니다.
 
 ## 6. 사이트 추가
 
