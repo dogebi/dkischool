@@ -7,112 +7,112 @@
    "menu_no": 40,
    "name": "학교앨범",
    "kind": "gallery",
-   "last_crawled": "2026-10-11 00:01:03",
+   "last_crawled": "2026-10-11 06:01:06",
    "posts_seen": 3
   },
   {
    "menu_no": 41,
    "name": "가정통신문",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:14",
+   "last_crawled": "2026-10-11 06:00:17",
    "posts_seen": 933
   },
   {
    "menu_no": 42,
    "name": "보건실",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:17",
+   "last_crawled": "2026-10-11 06:00:20",
    "posts_seen": 122
   },
   {
    "menu_no": 43,
    "name": "급식실",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:20",
+   "last_crawled": "2026-10-11 06:00:23",
    "posts_seen": 0
   },
   {
    "menu_no": 44,
    "name": "게시판",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:23",
+   "last_crawled": "2026-10-11 06:00:27",
    "posts_seen": 68
   },
   {
    "menu_no": 45,
    "name": "학생회",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:27",
+   "last_crawled": "2026-10-11 06:00:30",
    "posts_seen": 35
   },
   {
    "menu_no": 46,
    "name": "컵스카우트",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:30",
+   "last_crawled": "2026-10-11 06:00:33",
    "posts_seen": 75
   },
   {
    "menu_no": 47,
    "name": "공지사항",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:33",
+   "last_crawled": "2026-10-11 06:00:36",
    "posts_seen": 784
   },
   {
    "menu_no": 49,
    "name": "졸업생 대학진학 현황",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:36",
+   "last_crawled": "2026-10-11 06:00:40",
    "posts_seen": 398
   },
   {
    "menu_no": 74,
    "name": "한글학교 소식",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:40",
+   "last_crawled": "2026-10-11 06:00:43",
    "posts_seen": 20
   },
   {
    "menu_no": 79,
    "name": "도서실 공지사항",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:43",
+   "last_crawled": "2026-10-11 06:00:46",
    "posts_seen": 68
   },
   {
    "menu_no": 81,
    "name": "도서신청 및 기타",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:46",
+   "last_crawled": "2026-10-11 06:00:50",
    "posts_seen": 35
   },
   {
    "menu_no": 86,
    "name": "행사일정",
    "kind": "event",
-   "last_crawled": "2026-10-11 00:00:59",
+   "last_crawled": "2026-10-11 06:01:03",
    "posts_seen": 0
   },
   {
    "menu_no": 94,
    "name": "교육계획서",
    "kind": "file",
-   "last_crawled": "2026-10-11 00:00:53",
+   "last_crawled": "2026-10-11 06:00:56",
    "posts_seen": 7
   },
   {
    "menu_no": 96,
    "name": "학교규정집",
    "kind": "file",
-   "last_crawled": "2026-10-11 00:00:56",
+   "last_crawled": "2026-10-11 06:00:59",
    "posts_seen": 29
   },
   {
    "menu_no": 132,
    "name": "학부모회 게시판",
    "kind": "board",
-   "last_crawled": "2026-10-11 00:00:50",
+   "last_crawled": "2026-10-11 06:00:53",
    "posts_seen": 0
   }
  ],
@@ -247,6 +247,21 @@
  ],
  "runs": [
   {
+   "id": 30,
+   "site_key": "dkischool",
+   "mode": "incremental",
+   "started_at": "2026-10-11 06:00:11",
+   "finished_at": "2026-10-11 06:01:06",
+   "boards": "41,42,43,44,45,46,47,49,74,79,81,132,94,96,86,40",
+   "pages": 0,
+   "posts_new": 0,
+   "posts_updated": 0,
+   "attachments_new": 0,
+   "errors": 16,
+   "stats_json": "{\"fetcher\": {\"requests\": 0, \"bytes_in\": 0, \"retries\": 34, \"errors\": 17, \"by_status\": {}}, \"robots\": {\"respect\": true, \"disallow\": []}, \"workers\": 3, \"elapsed_s\": 55.5}",
+   "notes": "41:목록 실패: http://dkischool.org/?menu_no=41&board_mode=list&page=1 — 3회 실패: <urlopen error [Errno -3] Temporary failure in name resolution>; 42:목록 실패: http://dkischool.org/?menu_no=42&board_mode=list&page=1 — 3회 실패: <urlopen error [Errno -3] Temporary failure in name resolution>; 43:목록 실패: http://dkischool.org/?menu_no=43&board_mode=list&page=1 — 3회 실패: <urlopen error [Errno -3] Temporary failure in name resolution>; 44:목록 실패: http://dkischool.org/?menu_no=44&board_mode=list&page=1 — 3회 실패: <urlopen error [Errno -3] Temporary failure in name resolution>; 45:목록 실패: http://dkischool.org/?menu_no=45&board_mode=list&page=1 — 3회 실패: <urlopen error [Errno -3] Temporary failure in name resolution>; 46:목록 실패: http://dkischool.org/?menu_no=46&board_mode=list&page=1 — 3회 실패: <urlopen error [Errno -3] Temporary failure in name resolution>; 47:목록 실패: http://dkischool.org/?menu_no=47&board_mode=list&p"
+  },
+  {
    "id": 29,
    "site_key": "dkischool",
    "mode": "incremental",
@@ -349,21 +364,6 @@
    "attachments_new": 0,
    "errors": 0,
    "stats_json": "{\"fetcher\": {\"requests\": 21, \"bytes_in\": 507695, \"retries\": 0, \"errors\": 0, \"by_status\": {\"200\": 21}}, \"robots\": {\"respect\": true, \"disallow\": [\"/upload/\"]}, \"workers\": 3, \"elapsed_s\": 133.1}",
-   "notes": "41:신규 0건 (p1 도달); 42:신규 0건 (p1 도달); 43:빈 목록 · 전체 1회 완주; 44:신규 0건 (p1 도달); 45:신규 0건 (p1 도달); 46:신규 0건 (p1 도달); 47:신규 0건 (p1 도달); 49:신규 0건 (p1 도달); 74:신규 0건 (p1 도달); 79:신규 0건 (p1 도달); 81:신규 0건 (p1 도달); 132:빈 목록 · 전체 1회 완주; 94:신규 0건 (p1 도달); 96:신규 0건 (p1 도달); 86:빈 목록 · 전체 1회 완주; 40:신규 0건 (p1 도달)"
-  },
-  {
-   "id": 22,
-   "site_key": "dkischool",
-   "mode": "incremental",
-   "started_at": "2026-10-09 08:44:23",
-   "finished_at": "2026-10-09 08:44:44",
-   "boards": "41,42,43,44,45,46,47,49,74,79,81,132,94,96,86,40",
-   "pages": 13,
-   "posts_new": 0,
-   "posts_updated": 0,
-   "attachments_new": 0,
-   "errors": 0,
-   "stats_json": "{\"fetcher\": {\"requests\": 21, \"bytes_in\": 507695, \"retries\": 0, \"errors\": 0, \"by_status\": {\"200\": 21}}, \"robots\": {\"respect\": true, \"disallow\": [\"/upload/\"]}, \"workers\": 3, \"elapsed_s\": 21.3}",
    "notes": "41:신규 0건 (p1 도달); 42:신규 0건 (p1 도달); 43:빈 목록 · 전체 1회 완주; 44:신규 0건 (p1 도달); 45:신규 0건 (p1 도달); 46:신규 0건 (p1 도달); 47:신규 0건 (p1 도달); 49:신규 0건 (p1 도달); 74:신규 0건 (p1 도달); 79:신규 0건 (p1 도달); 81:신규 0건 (p1 도달); 132:빈 목록 · 전체 1회 완주; 94:신규 0건 (p1 도달); 96:신규 0건 (p1 도달); 86:빈 목록 · 전체 1회 완주; 40:신규 0건 (p1 도달)"
   }
  ],
